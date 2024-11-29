@@ -1,3 +1,5 @@
+# Devtrain: Ruby Hi-Lo
+
 # predefined number of guesses allowed
 guesses = 6
 ## computer secretly picks number between 1 and 100 inclusive
