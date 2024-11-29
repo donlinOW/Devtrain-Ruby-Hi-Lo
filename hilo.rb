@@ -4,15 +4,12 @@ guesses = 6
 number = rand(1...101)
 puts "Random number between 1 & 100 (inclusive): #{number}"
 
-# get user input
-puts "Guess the randomly computer generated number (1-100):"
-guess = gets.chomp.to_i
-puts "User guess: #{guess}"
-
 # conditional logic
 while guesses > 0
+    # get user input
     puts "Guess the randomly computer generated number (1-100):"
     guess = gets.chomp.to_i
+    # puts "User guess: #{guess}"
     # if user guesses correctly, game is won (guess = number)
     if (guess == number)
         puts "You win!"
