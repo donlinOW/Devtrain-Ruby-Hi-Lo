@@ -3,7 +3,7 @@
 # predefined number of guesses allowed
 guesses = 6
 ## computer secretly picks number between 1 and 100 inclusive
-number = rand(1...101)
+number = rand(1..100)
 
 # conditional logic that is run as long as user has remaining guesses left
 while guesses > 0
