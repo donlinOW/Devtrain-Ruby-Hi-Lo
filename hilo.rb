@@ -17,13 +17,13 @@ while guesses > 0
     break
   # if guess too high, decrement number of guesses left and tell them their guess was too high
   elsif guess > number
-    guesses -= 1
     puts "Your guess is too high!"
   # if guess too low, decrement number of guesses left and tell them their guess was too low
   elsif guess < number
-    guesses -=1
     puts "Your guess is too Low!"
   end
+  
+  guesses -=1
 end
 
 # if user makes 6 incorrect guesses, game is lost and number is revealed
