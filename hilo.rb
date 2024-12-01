@@ -23,10 +23,10 @@ while guesses > 0
   elsif guess < number
     guesses -=1
     puts "Your guess is too Low!"
-    end
+  end
 end
 
 # if user makes 6 incorrect guesses, game is lost and number is revealed
 if guesses == 0
-    puts "You ran out of guesses! The number was #{number}"
+  puts "You ran out of guesses! The number was #{number}"
 end
