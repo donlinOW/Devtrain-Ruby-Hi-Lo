@@ -22,8 +22,8 @@ while guesses > 0
   elsif guess < number
     puts "Your guess is too Low!"
   end
-  
-  guesses -=1
+
+  guesses -= 1
 end
 
 # if user makes 6 incorrect guesses, game is lost and number is revealed
