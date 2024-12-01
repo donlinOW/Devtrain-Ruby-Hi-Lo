@@ -5,6 +5,18 @@ guesses = 6
 ## computer secretly picks number between 1 and 100 inclusive
 number = rand(1..100)
 
+def too_high?(guess, number)
+  guess > number
+end
+
+def too_low?(guess, number)
+  guess < number
+end
+
+def correct_guess?(guess, number)
+  guess == number
+end
+
 # conditional logic that is run as long as user has remaining guesses left
 while guesses > 0
   # get user input
@@ -12,14 +24,14 @@ while guesses > 0
   # store user input
   guess = gets.chomp.to_i
   # if user guesses correctly, game is won (guess = number)
-  if (guess == number)
+  if correct_guess?(guess, number)
     puts "You win! #{number} was the number!"
     break
   # if guess too high, decrement number of guesses left and tell them their guess was too high
-  elsif guess > number
+  elsif too_high?(guess, number)
     puts "Your guess is too high!"
   # if guess too low, decrement number of guesses left and tell them their guess was too low
-  elsif guess < number
+  elsif too_low?(guess, number)
     puts "Your guess is too Low!"
   end
 
