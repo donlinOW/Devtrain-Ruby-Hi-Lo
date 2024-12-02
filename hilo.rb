@@ -1,44 +1,41 @@
-# Devtrain: Ruby Hi-Lo
-
-# predefined number of guesses allowed
-guesses = 6
-## computer secretly picks number between 1 and 100 inclusive
-number = rand(1..100)
-
-def too_high?(guess, number)
-  guess > number
-end
-
-def too_low?(guess, number)
-  guess < number
-end
-
-def correct_guess?(guess, number)
-  guess == number
-end
-
-# conditional logic that is run as long as user has remaining guesses left
-while guesses > 0
-  # get user input
-  puts "Guess the number between 1 & 100 (inclusive):"
-  # store user input
-  guess = gets.chomp.to_i
-  # if user guesses correctly, game is won (guess = number)
-  if correct_guess?(guess, number)
-    puts "You win! #{number} was the number!"
-    break
-  # if guess too high, decrement number of guesses left and tell them their guess was too high
-  elsif too_high?(guess, number)
-    puts "Your guess is too high!"
-  # if guess too low, decrement number of guesses left and tell them their guess was too low
-  elsif too_low?(guess, number)
-    puts "Your guess is too Low!"
+class HiLoGame
+  def initialize
+    @guesses = 6
+    @number = rand(1..100)
   end
 
-  guesses -= 1
+  def play
+    while @guesses > 0
+      puts "Guess the number between 1 & 100 (inclusive):"
+      guess = gets.chomp.to_i
+    
+      if correct_guess?(guess)
+        puts "You win! #{@number} was the number!"
+        break
+      elsif too_high?(guess)
+        puts "Your guess is too high!"
+      elsif too_low?(guess)
+        puts "Your guess is too Low!"
+      end
+    
+      @guesses -= 1
+    end
+    if @guesses == 0
+      puts "You ran out of guesses! The number was #{@number}"
+    end
+  end
+
+  def too_high?(guess)
+    guess > @number
+  end
+
+  def too_low?(guess)
+    guess < @number
+  end
+
+  def correct_guess?(guess)
+    guess == @number
+  end
 end
 
-# if user makes 6 incorrect guesses, game is lost and number is revealed
-if guesses == 0
-  puts "You ran out of guesses! The number was #{number}"
-end
+HiLoGame.new.play
