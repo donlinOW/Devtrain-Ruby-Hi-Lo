@@ -26,6 +26,8 @@ class HiLoGame
     puts "You ran out of guesses! The number was #{@number}" if @guesses.zero?
   end
 
+  private
+
   def too_high?(guess)
     guess > @number
   end
