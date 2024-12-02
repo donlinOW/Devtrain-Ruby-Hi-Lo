@@ -1,3 +1,4 @@
+# Ruby HiLo console game where the user tries to guess a random number between 1 and 100.
 class HiLoGame
   def initialize
     @guesses = 6
