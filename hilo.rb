@@ -8,7 +8,7 @@ class HiLoGame
   end
 
   def play
-    while @guesses > 0
+    while @guesses.positive?
       puts 'Guess the number between 1 & 100 (inclusive):'
       guess = gets.chomp.to_i
 
@@ -23,7 +23,7 @@ class HiLoGame
 
       @guesses -= 1
     end
-    if @guesses == 0
+    if @guesses.zero?
       puts "You ran out of guesses! The number was #{@number}"
     end
   end
