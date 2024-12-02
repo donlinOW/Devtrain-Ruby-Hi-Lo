@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Ruby HiLo console game where the user tries to guess a random number between 1 and 100.
 class HiLoGame
   def initialize
@@ -11,7 +13,7 @@ class HiLoGame
       guess = gets.chomp.to_i
 
       if correct_guess?(guess)
-        puts 'You win! #{@number} was the number!'
+        puts "You win! #{@number} was the number!"
         break
       elsif too_high?(guess)
         puts 'Your guess is too high!'
