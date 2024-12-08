@@ -16,7 +16,11 @@ class HiLoGame
         input = gets.chomp
         if input.match?(/^\d+$/)
           guess = input.to_i
-          break
+          if guess.between?(1, 100)
+            break
+          else
+            puts 'Invalid input, please enter a number between 1 & 100:'
+          end
         else
           puts 'Invalid input, please enter a number between 1 & 100:'
         end
