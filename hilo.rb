@@ -8,6 +8,8 @@ class HiLoGame
   end
 
   def play
+    previous_guesses = []
+
     while @guesses.positive?
       puts 'Guess the number between 1 & 100 (inclusive):'
       guess = nil
@@ -17,7 +19,12 @@ class HiLoGame
         if input.match?(/^\d+$/)
           guess = input.to_i
           if guess.between?(1, 100)
-            break
+            if previous_guesses.include?(guess)
+              puts 'You have already guessed that number, try a different number:'
+            else
+              previous_guesses << guess
+              break
+            end
           else
             puts 'Invalid input, please enter a number between 1 & 100:'
           end
