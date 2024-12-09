@@ -9,14 +9,15 @@ class HiLoGame
 
   def play
     previous_guesses = []
+    game_won = false
 
-    while @guesses.positive?
+    while @guesses.positive? && !game_won
       puts 'Guess the number between 1 & 100 (inclusive):'
       guess = validate_guess(previous_guesses)
 
       if correct_guess?(guess)
         puts "You win! #{@number} was the number!"
-        break
+        game_won = true
       elsif too_high?(guess)
         puts 'Your guess is too high!'
       elsif too_low?(guess)
@@ -25,7 +26,7 @@ class HiLoGame
 
       @guesses -= 1
     end
-    puts "You ran out of guesses! The number was #{@number}" if @guesses.zero?
+    puts "You ran out of guesses! The number was #{@number}" if @guesses.zero? && !game_won
   end
 
   private
