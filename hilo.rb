@@ -16,21 +16,24 @@ class HiLoGame
 
       loop do
         input = gets.chomp
-        if input.match?(/^\d+$/)
-          guess = input.to_i
-          if guess.between?(1, 100)
-            if previous_guesses.include?(guess)
-              puts 'You have already guessed that number, try a different number:'
-            else
-              previous_guesses << guess
-              break
-            end
-          else
-            puts 'Invalid input, please enter a number between 1 & 100:'
-          end
-        else
+        unless input.match?(/^\d+$/)
           puts 'Invalid input, please enter a number between 1 & 100:'
+          next
         end
+
+        guess = input.to_i
+        unless guess.between?(1, 100)
+          puts 'Invalid input, please enter a number between 1 & 100:'
+          next
+        end
+
+        if previous_guesses.include?(guess)
+          puts 'You have already guessed that number, try a different number:'
+          next
+        end
+
+        previous_guesses << guess
+        break
       end
 
       if correct_guess?(guess)
