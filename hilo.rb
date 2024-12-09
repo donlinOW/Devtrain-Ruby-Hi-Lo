@@ -12,29 +12,7 @@ class HiLoGame
 
     while @guesses.positive?
       puts 'Guess the number between 1 & 100 (inclusive):'
-      guess = nil
-
-      loop do
-        input = gets.chomp
-        unless input.match?(/^\d+$/)
-          puts 'Invalid input, please enter a number between 1 & 100:'
-          next
-        end
-
-        guess = input.to_i
-        unless guess.between?(1, 100)
-          puts 'Invalid input, please enter a number between 1 & 100:'
-          next
-        end
-
-        if previous_guesses.include?(guess)
-          puts 'You have already guessed that number, try a different number:'
-          next
-        end
-
-        previous_guesses << guess
-        break
-      end
+      guess = validate_guess(previous_guesses)
 
       if correct_guess?(guess)
         puts "You win! #{@number} was the number!"
@@ -51,6 +29,30 @@ class HiLoGame
   end
 
   private
+
+  def validate_guess(previous_guesses)
+    loop do
+      input = gets.chomp
+      unless input.match?(/^\d+$/)
+        puts 'Invalid input, please enter a number between 1 & 100:'
+        next
+      end
+
+      guess = input.to_i
+      unless guess.between?(1, 100)
+        puts 'Invalid input, please enter a number between 1 & 100:'
+        next
+      end
+
+      if previous_guesses.include?(guess)
+        puts 'You have already guessed that number, try a different number:'
+        next
+      end
+
+      previous_guesses << guess
+      return guess
+    end
+  end
 
   def too_high?(guess)
     guess > @number
